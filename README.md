@@ -440,7 +440,7 @@ interact();
   
 This code creates a new instance of the ContractKit library and sets up an account with the private key specified in the code. It then retrieves the network ID and contract address from the deployed contract, and creates a new instance of the contract using the ContractKit library. Finally, it sends a message to the contract and retrieves the message to verify that the interaction was successful.
 
-### Code GLossary
+### Code Glossary
 * The **IERC20** interface is a standardized interface for interacting with ERC-20 tokens, which are a type of cryptocurrency that can be created and traded on the Ethereum and Celo blockchains. The **celoToken** variable is an instance of the **IERC20** interface, which allows the contract to interact with the Celo token on the blockchain.
 
 * The **Ownable** contract is a standard contract provided by the OpenZeppelin library, which is a collection of smart contract libraries that provides common functionality for building decentralized applications. The **Ownable** contract provides a set of access control functions that allow the owner of the contract to perform certain actions that are restricted to them, such as adding or removing contributors from the mapping.
