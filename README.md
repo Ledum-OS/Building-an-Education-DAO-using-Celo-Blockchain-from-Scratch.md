@@ -321,4 +321,99 @@ Now we can deploy our contract to the Alfajores testnet by running the following
 This will deploy the contract to the Alfajores testnet and print out the address of the deployed contract.
   
 ### Step 7 - Interact with the contract
+Now that we have deployed our EducationalDAO contract to the Celo blockchain, we can interact with it using a web3-enabled browser like MetaMask.
+
+First, we need to add the contract to our web3 provider. In the hardhat.config.js file, add the following code:
+
+```` js
+  module.exports = {
+  // ...
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
+  },
+  // ...
+  paths: {
+    // ...
+    artifacts: "./artifacts",
+  },
+  // ...
+  networks: {
+    // ...
+    alfajores: {
+      url: "https://alfajores-forno.celo-testnet.org",
+      accounts: [privateKey],
+      gasPrice: 1000000000,
+      gas: 5000000,
+    },
+  },
+  // ...
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+  // ...
+  typechain: {
+    outDir: "types",
+    target: "ethers-v5",
+  },
+  // ...
+  external: {
+    contracts: [
+      {
+        artifacts: "node_modules/@celo/contractkit/artifacts/contracts",
+      },
+    ],
+  },
+};
+
+````
+This code configures Hardhat to generate TypeScript type definitions for our contract using the **typechain** plugin and tells Hardhat where to find the contract artifacts.
+
+Next, we need to generate the TypeScript type definitions by running the following command:
+ 
+```` bash
+  npx hardhat type
+````
   
+
+Finally, we can interact with our contract by creating a new JavaScript file in the scripts directory called interact.js. In this file, we will use the ContractKit library to interact with our contract.
+  
+```` js
+  const { ContractKit } = require('@celo/contractkit');
+
+async function interact() {
+  const kit = ContractKit.newKit('https://alfajores-forno.celo-testnet.org');
+  const privateKey = '<your-private-key>';
+  const account = kit.web3.eth.accounts.privateKeyToAccount(privateKey);
+  kit.addAccount(account.privateKey);
+
+  const networkId = await kit.web3.eth.net.getId();
+  const deployedNetwork = EducationalDAO.networks[networkId];
+  const contract = new kit.web3.eth.Contract(
+    EducationalDAO.abi,
+    deployedNetwork.address
+  );
+
+  const message = 'Hello, world!';
+  const result = await contract.methods.postMessage(message).send({ from: account.address });
+  console.log('Transaction hash:', result.transactionHash);
+
+  const retrievedMessage = await contract.methods.getMessage().call();
+  console.log('Retrieved message:', retrievedMessage);
+}
+
+interact();
+
+````
+  
+This code creates a new instance of the ContractKit library and sets up an account with the private key specified in the code. It then retrieves the network ID and contract address from the deployed contract, and creates a new instance of the contract using the ContractKit library. Finally, it sends a message to the contract and retrieves the message to verify that the interaction was successful.
+  
+## Conclusion
+In this tutorial, we have created a simple EducationalDAO contract on the Celo blockchain using Solidity and the Hardhat development framework. We have deployed the contract to the Alfajores testnet and interacted with it using the ContractKit library. This tutorial serves as a starting point for building more complex smart contracts on the Celo blockchain and exploring the many possibilities that decentralized finance and blockchain technology offer.
