@@ -430,5 +430,5 @@ This code creates a new instance of the ContractKit library and sets up an accou
 
 * The **require** statement is used throughout the contract to enforce certain conditions before allowing a function to execute. For example, the **submitContent** function requires that the caller is a contributor before allowing them to submit new content, and the **approveContent** function requires that the caller is the owner of the contract before allowing them to approve content.
 
-  ## Conclusion
+## Conclusion
 In this tutorial, we have created a simple EducationalDAO contract on the Celo blockchain using Solidity and the Hardhat development framework. We have deployed the contract to the Alfajores testnet and interacted with it using the ContractKit library. This tutorial serves as a starting point for building more complex smart contracts on the Celo blockchain and exploring the many possibilities that decentralized finance and blockchain technology offer.
