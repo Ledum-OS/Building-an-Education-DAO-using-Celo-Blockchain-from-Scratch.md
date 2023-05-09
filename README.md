@@ -3,6 +3,10 @@
 ## Introduction
 Blockchain technology has opened up new possibilities for decentralized finance, and smart contracts play a crucial role in making this possible. In this tutorial, we will be creating a simple Educational DAO contract on the Celo blockchain using Solidity and the Hardhat development framework. This contract will allow users to contribute educational content and earn on the Celo blockchain.
 
+First, it's helpful to understand what a **blockchain** is. A **blockchain** is a decentralized, digital ledger of transactions that is maintained by a network of computers, rather than a central authority. Each block in the chain contains a record of multiple transactions, which are validated and added to the chain through a process called "mining". Once a block has been added to the chain, it cannot be altered, making the blockchain a secure and tamper-proof way of storing data.
+
+**Smart contracts** are self-executing programs that run on a blockchain and automatically enforce the rules and agreements encoded in their code. They are a key component of decentralized applications (dApps), which are apps that run on a blockchain and are decentralized, meaning they are not controlled by a single entity.
+
 ### Learning Objective
 By the end of this tutorial, you will be able to:
 * Write and deploy a smart contract on the Celo blockchain using Solidity and Hardhat
