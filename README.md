@@ -1,4 +1,4 @@
-# Creating an Educational DAO on the Celo Blockchain with Solidity and Hardhat.md
+# Creating an Educational DAO on the Celo Blockchain with Solidity and Hardhat
 
 ## Introduction
 Blockchain technology has opened up new possibilities for decentralized finance, and smart contracts play a crucial role in making this possible. In this tutorial, we will be creating a simple Educational DAO contract on the Celo blockchain using Solidity and the Hardhat development framework. This contract will allow contributors to submit educational content to the organization, and rewards them with cryptocurrency for their contributions.
@@ -7,24 +7,45 @@ First, it's helpful to understand what a **blockchain** is. A **blockchain** is 
 
 **Smart contracts** are self-executing programs that run on a blockchain and automatically enforce the rules and agreements encoded in their code. They are a key component of decentralized applications (dApps), which are apps that run on a blockchain and are decentralized, meaning they are not controlled by a single entity.
 
-### Learning Objective
+## Table of Contents
+
+- [Creating an Educational DAO on the Celo Blockchain with Solidity and Hardhat
+](#Creating-an-Educational-DAO-on-the-Celo-Blockchain-with-Solidity-and-Hardhat)
+  - [Introduction](#introduction)
+  - [Table of Contents](#table-of-contents)
+  - [Learning Objective](#Learning-objective)
+  - [Tech Stack](#Tech-Stack)
+  - [Prerequisites and Previous Knowledge](#Prerequisites-and-Previous-Knowledge)
+  - [Time Required](#Time-Required)
+  - [Tutorial](#tutorial)
+    - [Step 1 - Create a new Hardhat project](#Step-1-Create-a-new-Hardhat-project)
+    - [Step 2 - Install the necessary dependencies](#Step-2-Install-the-necessary-dependencies)
+    - [Step 3 - Set up your .env file](#Step-3-Set-up-your-env-file)
+    - [Step 4 - Write your Educational DAO contract](#Step-4-Write-your-Educational-DAO-contract)
+    - [Step 5 - Write a Hardhat test script](#Step-5-Write-a-Hardhat-test-script)
+    - [Step 6 - Deploy the contract](#Step-6-Deploy-the-contract)
+    - [Step 7 - Interact with the contract](#Step-7-Interact-with-the-contract)
+    - [Conclusion](#conclusion)
+
+
+## Learning Objective
 By the end of this tutorial, you will be able to:
 * Write and deploy a smart contract on the Celo blockchain using Solidity and Hardhat
 * Interact with the deployed contract using the ContractKit library
 
-### Tech Stack
+## Tech Stack
 * [Solidity](https://docs.soliditylang.org/en/v0.8.19/)
 * [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started#overview)
 * [ContractKit library](https://docs.celo.org/developer/contractkit)
 * [Celo blockchain](https://docs.celo.org/) (specifically, the Alfajores testnet)
 
-### Prerequisites and Previous Knowledge
+## Prerequisites and Previous Knowledge
 * Basic understanding of blockchain technology and smart contracts
 * Familiarity with JavaScript and Node.js
 * A text editor such as Visual Studio Code
 * An understanding of how to use the command line interface (CLI)
 
-### Time Required
+## Time Required
 This tutorial should take approximately 1-2 hours to complete, depending on your level of experience with blockchain development.
 
 ## Tutorial
@@ -60,7 +81,7 @@ Replace **<your mnemonic here>** with your 12-word mnemonic phrase, and **<your 
 ### Step 4 - Write your Educational DAO contract
 Now it's time to write your Educational DAO contract! Open a new file called **EducationalDAO.sol** in the **contracts/** directory of your project, and add the following code:
   
-``` sol
+``` solidity
   // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
