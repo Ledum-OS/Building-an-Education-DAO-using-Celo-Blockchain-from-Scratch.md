@@ -420,23 +420,30 @@ Now that we have deployed our EducationalDAO contract to the Celo blockchain, we
 Finally, we can interact with our contract by creating a new JavaScript file in the scripts directory called interact.js. In this file, we will use the ContractKit library to interact with our contract.
   
 ```` js
-const hre = require("hardhat");
+const { ContractKit } = require('@celo/contractkit');
 
-async function main() {
-  const celoTokenAddress = ""; // Add the address of the deployed MockCeloToken contract here
+async function interact() {
+  const kit = ContractKit.newKit('https://alfajores-forno.celo-testnet.org');
+  const privateKey = '<your-private-key>';
+  const account = kit.web3.eth.accounts.privateKeyToAccount(privateKey);
+  kit.addAccount(account.privateKey);
 
-  const EducationalDAO = await hre.ethers.getContractFactory("EducationalDAO");
-  const educationalDAO = await EducationalDAO.deploy(0x5FbDB2315678afecb367f032d93F642f64180aa3);
+  const networkId = await kit.web3.eth.net.getId();
+  const deployedNetwork = EducationalDAO.networks[networkId];
+  const contract = new kit.web3.eth.Contract(
+    EducationalDAO.abi,
+    deployedNetwork.address
+  );
 
-  await educationalDAO.deployed();
+  const message = 'Hello, world!';
+  const result = await contract.methods.postMessage(message).send({ from: account.address });
+  console.log('Transaction hash:', result.transactionHash);
 
-  console.log("EducationalDAO deployed to:", educationalDAO.address);
+  const retrievedMessage = await contract.methods.getMessage().call();
+  console.log('Retrieved message:', retrievedMessage);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+interact();
 ````
   
 This code creates a new instance of the ContractKit library and sets up an account with the private key specified in the code. It then retrieves the network ID and contract address from the deployed contract, and creates a new instance of the contract using the ContractKit library. Finally, it sends a message to the contract and retrieves the message to verify that the interaction was successful.
